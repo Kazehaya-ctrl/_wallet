@@ -22,8 +22,7 @@ export const authOptons = {
 				if (!credentials) return null;
 
 				const { phone, password } = credentials;
-				const phoneNumber =
-					typeof phone === "string" ? parseInt(phone) : phone;
+				const phoneNumber = typeof phone === "string" ? parseInt(phone) : phone;
 
 				const existingUser = await prisma.user.findUnique({
 					where: {
@@ -39,8 +38,9 @@ export const authOptons = {
 					if (passwordValidation) {
 						return {
 							id: existingUser.id.toString(),
-							name: existingUser.phone.toString(),
+							name: existingUser.name || "User",
 							email: existingUser.email,
+							image: existingUser.phone.toString(),
 						};
 					}
 					return null;
@@ -58,8 +58,9 @@ export const authOptons = {
 					if (user) {
 						return {
 							id: user.id.toString(),
-							name: user.phone.toString(),
+							name: user.name || " ",
 							email: user.email,
+							image: user.phone.toString(),
 						};
 					}
 					return null;
