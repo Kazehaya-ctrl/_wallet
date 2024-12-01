@@ -1,5 +1,4 @@
 import TransactionsComponent from "@/components/Transactions";
-import { useSession } from "next-auth/react";
 
 export default function Transactions() {
 	return (

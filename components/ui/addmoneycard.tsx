@@ -1,4 +1,4 @@
-const bankOptions: Array<string> = ["HDFC", "SBI", "IDBI"];
+export const bankOptions: Array<string> = ["HDFC", "SBI", "IDBI"];
 export default function TransferCard({
 	amount,
 	setAmount,

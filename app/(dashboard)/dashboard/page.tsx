@@ -16,6 +16,16 @@ async function fetchUserBalance() {
 
 export default async function Dashboard() {
 	const userBalance = await fetchUserBalance();
+	const session = await getServerSession(authOptons);
+	if (!session) {
+		return (
+			<>
+				<div className="font-bold text-3xl">
+					Please Login to see your details
+				</div>
+			</>
+		);
+	}
 	return (
 		<>
 			<div className="font-semibold font-sans text-3xl text-center text-purple-600">

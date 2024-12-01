@@ -1,13 +1,16 @@
 "use client";
 import { useSession } from "next-auth/react";
 import { signIn, signOut } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export default function Appbar() {
 	const session = useSession();
+	const router = useRouter();
 
 	const handleClick = async () => {
 		if (session.data?.user) {
 			await signOut();
+			router.push("/logout");
 		} else {
 			signIn();
 		}

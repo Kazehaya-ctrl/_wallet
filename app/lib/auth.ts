@@ -73,6 +73,12 @@ export const authOptons = {
 	],
 	secret: process.env.AUTH_SECRET,
 	callbacks: {
+		async redirect({ url, baseUrl }: any) {
+			if (url === baseUrl + "/api/auth/signin") {
+				return baseUrl + "/dashboard";
+			}
+			return url;
+		},
 		async session({ token, session }: any) {
 			session.user.id = token.sub;
 
